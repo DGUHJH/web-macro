@@ -23,7 +23,7 @@ class App(QWidget):
 
   def __init__(self):
     super().__init__()
-    self.data=['', '', '', '']
+    self.data=['', '', '', '', '']
     self.checked=[False, False, False, False]
     self.initUI()
 
@@ -31,14 +31,15 @@ class App(QWidget):
     grid = QGridLayout()
     self.setLayout(grid)
 
-    grid.addWidget(QLabel('크롬 webdriver:'), 0, 0)
+    grid.addWidget(QLabel('크롬 driver:'), 0, 0)
     grid.addWidget(QLabel('제목:'), 1, 0)
     grid.addWidget(QLabel('설명:'), 2, 0)
     grid.addWidget(QLabel('이미지(url):'), 3, 0)
+    grid.addWidget(QLabel('이미지2(url):'), 4, 0)
 
-    editor = [QLineEdit(self),QLineEdit(self),QLineEdit(self),QLineEdit(self)]
+    editor = [QLineEdit(self),QLineEdit(self),QLineEdit(self),QLineEdit(self),QLineEdit(self)]
 
-    for i in range(4):
+    for i in range(5):
       editor[i].textChanged[str].connect(functools.partial(self.onChange,i))
       grid.addWidget(editor[i], i, 1)
 
@@ -51,7 +52,7 @@ class App(QWidget):
     self.submitButton = QPushButton('입력')
     self.submitButton.clicked.connect(self.onSubmitButtonClick)
 
-    grid.addWidget(self.submitButton, 6, 1)
+    grid.addWidget(self.submitButton, 7, 1)
 
     self.setWindowTitle('마케팅팀 힘들다길래 만들어봤어요.')
     self.setGeometry(300, 300, 400, 200)
@@ -66,7 +67,7 @@ class App(QWidget):
   def onSubmitButtonClick(self):
     for i in range(4):
       if self.checked[i]:
-        api_list[i](self.data[0], self.data[1], self.data[2], self.data[3])
+        api_list[i](self.data[0], self.data[1], self.data[2], self.data[3], self.data[4])
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

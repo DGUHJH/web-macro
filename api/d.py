@@ -4,7 +4,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
-def d(webdriver_url, title, body, image):
+def d(webdriver_url, title, body, image, image2):
 
   driver = webdriver.Chrome(f'{webdriver_url}')
   driver.get('https://user.ruliweb.com/member/login')
@@ -43,6 +43,8 @@ def d(webdriver_url, title, body, image):
 
   write_body_editor = driver.find_element_by_xpath('//html/body')
   write_body_editor.send_keys(f'{body}')
+  if image2 != '':
+    file_upload_editor.send_keys(f'{image2}')
 
   driver.switch_to.default_content()
 

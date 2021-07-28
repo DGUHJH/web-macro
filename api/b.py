@@ -3,7 +3,7 @@
 import time
 from selenium import webdriver
 
-def b(webdriver_url, title, body, image):
+def b(webdriver_url, title, body, image, image2):
 
   driver = webdriver.Chrome(f'{webdriver_url}')
   driver.get('https://security.bobaedream.co.kr/member/slogin.php')
@@ -40,6 +40,9 @@ def b(webdriver_url, title, body, image):
 
   file_upload_editor = driver.find_element_by_xpath('//*[@id="inputImageUpload"]')
   file_upload_editor.send_keys(f'{image}')
+  if image2 != '':
+    file_upload_editor.send_keys(f'{image2}')
+
 
   file_upload_editor_button = driver.find_element_by_xpath('//*[@id="buttonWrapper"]/img[1]')
 

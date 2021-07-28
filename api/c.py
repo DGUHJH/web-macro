@@ -4,7 +4,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
-def c(webdriver_url, title, body, image):
+def c(webdriver_url, title, body, image, image2):
 
   driver = webdriver.Chrome(f'{webdriver_url}')
   driver.get('https://www.fmkorea.com/')
@@ -41,6 +41,10 @@ def c(webdriver_url, title, body, image):
 
   file_upload_editor = driver.find_element_by_xpath('//*[@id="xe-fileupload"]')
   file_upload_editor.send_keys(f'{image}')
+  if image2 != '':
+    time.sleep(10)
+    file_upload_editor = driver.find_element_by_xpath('//*[@id="xe-fileupload"]')
+    file_upload_editor.send_keys(f'{image2}')
 
   time.sleep(10)
 

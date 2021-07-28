@@ -6,7 +6,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
-def a(webdriver_url, title, body, image):
+def a(webdriver_url, title, body, image, image2):
 
   driver = webdriver.Chrome(f'{webdriver_url}')
   driver.get('https://www.ppomppu.co.kr/')
@@ -55,10 +55,12 @@ def a(webdriver_url, title, body, image):
 
   file_upload_editor = driver.find_element_by_xpath('//*[@id="inputImageUpload"]')
   file_upload_editor.send_keys(f'{image}')
+  if image2 != '':
+    file_upload_editor.send_keys(f'{image2}')
 
   file_upload_editor_button = driver.find_element_by_xpath('//*[@id="buttonWrapper"]/img[1]')
 
-  time.sleep(10)
+  time.sleep(15)
 
   file_upload_editor_button.click()
 
